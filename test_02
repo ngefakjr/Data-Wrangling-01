@@ -1,0 +1,25 @@
+# init
+newcol = [0]
+condition = [0]
+
+# loop through every row
+for i in range(1,len(df)):
+ 
+  # get row
+  row = df.iloc[i]
+ 
+  # get condition value
+  condition_value = newcol[i-1] + row['G'] - row['E']
+  condition.append(condition_value)
+ 
+  # check if condition <0
+  if condition_value < 0 :
+  newcol.append(row['F'])
+ 
+  else :
+  value = condition_value + row['F']
+  newcol.append(value)
+
+# add to dataframe
+df['condition'] = condition
+df['newcol'] = newcol
